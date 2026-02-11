@@ -1,0 +1,10 @@
+body{font-family:Arial,sans-serif;background:#f4f4f4;padding:20px;margin:0;}
+h1{text-align:center;margin-bottom:20px;}
+.container{display:flex;flex-wrap:wrap;justify-content:center;}
+.box{background:#fff;padding:20px;margin:10px;width:450px;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,0.1);}
+input,select,button{padding:8px;margin:5px;width:calc(100% - 20px);}
+button{background:green;color:white;border:none;cursor:pointer;width:auto;padding:10px 20px;}
+button:hover{background:darkgreen;}
+table{width:100%;border-collapse:collapse;margin-top:10px;}
+table,th,td{border:1px solid #ccc;padding:8px;text-align:center;}
+@media(max-width:768px){.container{flex-direction:column;width:100%;}.box{width:95%;margin:10px auto;}}

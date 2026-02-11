@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stock Billing Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="box" style="max-width:400px;margin:auto;">
+    <h2>Login</h2>
+    <input type="email" id="loginEmail" placeholder="Email">
+    <input type="password" id="loginPass" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <hr>
+    <h2>Register (Admin Only)</h2>
+    <input type="text" id="regName" placeholder="Full Name">
+    <input type="email" id="regEmail" placeholder="Email">
+    <input type="password" id="regPass" placeholder="Password">
+    <select id="regRole">
+        <option value="admin">Admin</option>
+        <option value="staff">Staff</option>
+    </select>
+    <button onclick="register()">Register</button>
+</div>
+
+<script type="module">
+import { registerUser, loginUser } from './firebase.js';
+
+async function login(){
+    const email = document.getElementById("loginEmail").value;
+    const pass = document.getElementById("loginPass").value;
+    try{
+        await loginUser(email, pass);
+        alert("Login Successful!");
+        window.location.href = "dashboard.html";
+    }catch(e){ alert("Login Failed: "+e.message); }
+}
+
+async function register(){
+    const name = document.getElementById("regName").value;
+    const email = document.getElementById("regEmail").value;
+    const pass = document.getElementById("regPass").value;
+    const role = document.getElementById("regRole").value;
+    try{
+        await registerUser(email, pass, name, role);
+        alert("User Registered! Login now.");
+    }catch(e){ alert("Register Failed: "+e.message); }
+}
+</script>
+</body>
+</html>
